@@ -1,0 +1,6 @@
+
+8월 12, 2023 21:07:34.26 NEW SESSION
+8월 12, 2023 21:07:34.26 [7180:18140:0812/210734.024:ERROR:device_event_log_impl.cc(222)] [21:07:34.025] USB: usb_service_win.cc:415 Could not read device interface GUIDs: 지정된 파일을 찾을 수 없습니다. (0x2)
+
+8월 14, 2023 01:20:46.755 NEW SESSION
+8월 14, 2023 01:20:46.755 [6880:12600:0814/012046.754:ERROR:device_event_log_impl.cc(222)] [01:20:46.755] USB: usb_service_win.cc:415 Could not read device interface GUIDs: 지정된 파일을 찾을 수 없습니다. (0x2)

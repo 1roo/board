@@ -1,0 +1,19 @@
+package com.spring.myboard.reply.mapper;
+
+import java.util.List;
+import java.util.Map;
+
+import com.spring.myboard.command.ReplyVO;
+
+public interface IReplyMapper {
+
+	void replyRegist(ReplyVO vo);
+	
+	List<ReplyVO> getReplyList(Map<String, Object> data);
+	
+	int getReplyTotal(int rno);
+	
+	int pwCheck(int rno);
+	
+	void delete(int rno);
+}

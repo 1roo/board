@@ -1,0 +1,5 @@
+package com.spring.board.comment.mapper;
+
+public interface ICommentMapper {
+
+}
