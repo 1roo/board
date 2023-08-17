@@ -23,5 +23,7 @@ public interface IBoardService {
 		
 		//글 삭제
 		void delete(int bno);
+
+		
 		
 }

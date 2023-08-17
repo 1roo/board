@@ -1,5 +1,0 @@
-package com.spring.board.board.mapper;
-
-public interface IBoardMapper {
-
-}

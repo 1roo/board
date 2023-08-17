@@ -2,6 +2,7 @@ package com.spring.board.board.mapper;
 
 import java.util.List;
 
+
 import com.spring.board.command.BoardVO;
 import com.spring.board.util.PageVO;
 
@@ -19,5 +20,8 @@ public interface IBoardMapper {
 	
 	void delete(int bno);
 	
+	void replyRegist(BoardVO vo);
+
+
 }
 

@@ -59,7 +59,8 @@
 							${totalBoardCount - (pc.pageVO.getPageStart() + loop.index)}
 						</td>
 						<td id="title" class="titles">
-                            <a href="${pageContext.request.contextPath}/content/${vo.bno}?pageNum=${fn:escapeXml(pc.pageVO.pageNum)}&cpp=${fn:escapeXml(pc.pageVO.cpp)}&searchWord=${fn:escapeXml(pc.pageVO.searchWord)}&condition=${fn:escapeXml(pc.pageVO.condition)}" class="preserve-whitespace">${fn:escapeXml(vo.title)}</a>
+                            <a href="${pageContext.request.contextPath}/content/${vo.bno}?pageNum=${fn:escapeXml(pc.pageVO.pageNum)}&cpp=${fn:escapeXml(pc.pageVO.cpp)}&searchWord=${fn:escapeXml(pc.pageVO.searchWord)}&condition=${fn:escapeXml(pc.pageVO.condition)}" class="preserve-whitespace">${fn:escapeXml(vo.title)}
+                            <b>[${vo.commentCnt}]</b></a>
                         </td>
                         <td id="writer">
                             ${fn:escapeXml(vo.writer)}

@@ -13,6 +13,9 @@ CREATE TABLE board(
    writer VARCHAR(10) NOT NULL,
    password VARCHAR(15) NOT NULL,
    content VARCHAR(500) NOT NULL,
+   group_no INT NOT NULL,
+   group_ord INT NOT NULL,
+   depth INT NOT NULL,
    create_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME DEFAULT NULL
 );
@@ -29,4 +32,10 @@ public class BoardVO {
 	private String content;
 	private LocalDateTime createDate;
 	private LocalDateTime updateDate;
+	
+	private int groupNo;
+	private int groupOrd;
+	private int depth;
+	
+	private int commentCnt;
 }

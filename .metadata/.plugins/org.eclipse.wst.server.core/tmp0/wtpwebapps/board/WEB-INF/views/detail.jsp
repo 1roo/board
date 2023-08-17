@@ -32,6 +32,7 @@
 				<div class="bno">
 					<input type="hidden" class="form-control" name="bno"
 						value="${article.bno}" readonly>
+					<input type="hidden"
 				</div>
 				<div class="input-line writer-input">
 					<label>작성자</label> <input class="form-control" name="writer"
@@ -53,6 +54,8 @@
 						class="btn delete-btn btn-outline-primary" onclick="toDelete()">삭제</button>
 					<button type="button" class="btn list-btn btn-outline-primary"
 						onclick="location.href='${pageContext.request.contextPath}/'">목록</button>
+						<button type="button" class="btn replyBtn btn-outline-primary"
+						onclick="location.href='${pageContext.request.contextPath}/reply?no=${article.bno}'">답글달기</button>
 				</div>
 				<p style="display: none" id="realPw">${fn:escapeXml(article.password)}</p>
 			</form>
@@ -341,23 +344,24 @@
 			 	
                     for(let i=0; i<commentList.length; i++) {
                     	strAdd += `
-                            <div class='comment-wrap'>
-                            <div class='comment-content'>
-                                <div class='comment-group'>
-                                    <strong class='left'>` + commentList[i].commentWriter + ` </strong>
+                            <div class="comment-wrap">
+                            <div class="comment-content">
+                                <div class="comment-group">
+                                    <strong class="left commentWriter">` + commentList[i].commentWriter + ` </strong>
                                     <div class="commentBtns">
-	                                    <small class='left'>` + (commentList[i].updateDate != null ? parseTime(commentList[i].updateDate) + ' (수정됨)' : parseTime(commentList[i].createDate)) + `</small>
+	                                    <small class="left">` + (commentList[i].updateDate != null ? parseTime(commentList[i].updateDate) + ' (수정됨)' : parseTime(commentList[i].createDate)) + `</small>
 	                                    <a href='` + commentList[i].cno + `' class='commentModify'>수정</a>
 	                                    <a href='` + commentList[i].cno + `' class='commentDelete'>삭제</a>       
                                 	</div>
                                     </div>
-                                <p id="pComment" class='comment clearfix'>` + commentList[i].comment + `</p>
+                                <p id="pComment" class="comment clearfix">` + commentList[i].comment + `</p>
                             </div>
                         	</div>`;
                     }
 			 		
                     if (!reset) {
                         document.getElementById('commentList').insertAdjacentHTML('beforeend', strAdd);
+                    
                     } else {
                         document.getElementById('commentList').insertAdjacentHTML('afterbegin', strAdd);
                     }
@@ -439,7 +443,6 @@
 
     		                    const checkResult = await checkResponse.text();
     		                    if (checkResult === 'pwSuccess') {
-    		                    	alert('비밀번호가 일치합니다');
     		                    	$('#commentModal').modal('show');
      		                        // 모달 내부의 요소들 가져오기
      		                        document.getElementById('modalCno').value = cno;

@@ -68,13 +68,13 @@ public class CommentController {
         String updateResult = service.update(cno, vo.getComment());
         return updateResult;
     }
-	
-	
+		
 
 	//댓글 삭제
 	@DeleteMapping("/{cno}")
 	public String delete(@PathVariable int cno, @RequestBody CommentVO vo) {
 		return service.delete(cno, vo.getCommentPw());
 	}
+	
 	
 }

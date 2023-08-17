@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.board.board.service.IBoardService;
 import com.spring.board.command.BoardVO;
@@ -41,20 +42,15 @@ public class BoardController {
 		return "/regist";
 	}
 	
+
+	
 	@PostMapping("/regist")
-	public String regist(BoardVO vo) {
-	    String content = vo.getContent();
-	    int maxLength = 500;
-
-	    if (content.length() > maxLength) {
-	        content = content.substring(0, maxLength);
-	    }
-
-	    vo.setContent(content);
+	public String regist(BoardVO vo) {		
 	    service.regist(vo);
-	    
 	    return "redirect:/";
 	}
+
+
 	
 	@GetMapping("/content/{bno}")
 	public String getContent(@PathVariable int bno, @ModelAttribute("p") PageVO vo
@@ -79,4 +75,5 @@ public class BoardController {
 		service.delete(bno);
 		return "redirect:/";
 	}
+
 }

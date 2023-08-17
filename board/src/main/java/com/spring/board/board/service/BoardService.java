@@ -9,9 +9,10 @@ import com.spring.board.board.mapper.IBoardMapper;
 import com.spring.board.command.BoardVO;
 import com.spring.board.util.PageVO;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@Service @Slf4j
+@Service @Slf4j @AllArgsConstructor
 public class BoardService implements IBoardService {
 	
 	@Autowired
@@ -27,7 +28,7 @@ public class BoardService implements IBoardService {
 			throw new RuntimeException("게시물 등록 실패");
 		}
 	}
-
+	
 	@Override
 	public List<BoardVO> getList(PageVO vo) {
 		return mapper.getList(vo);
@@ -53,6 +54,5 @@ public class BoardService implements IBoardService {
 		mapper.delete(bno);
 	}
 
-	
-	
+
 }
