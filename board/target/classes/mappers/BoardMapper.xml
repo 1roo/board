@@ -28,7 +28,7 @@
 	<insert id="regist">
 		INSERT INTO board
 		(title, writer, content, password, group_no)
-		VALUES(#{title}, #{writer}, #{content}, #{password}, 0)
+		VALUES(#{title}, #{writer}, #{content}, #{password}, (SELECT IFNULL(MAX(group_no),0)+1 FROM board)
 	</insert>
 	
 	<select id="getList" resultType="board">
