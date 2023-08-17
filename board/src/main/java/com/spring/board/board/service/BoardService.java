@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.board.board.mapper.IBoardMapper;
 import com.spring.board.command.BoardVO;
@@ -53,6 +54,15 @@ public class BoardService implements IBoardService {
 	public void delete(int bno) {
 		mapper.delete(bno);
 	}
-
+	
+	//답글 달기
+	@Override
+	@Transactional
+    public void updateAndInsert(BoardVO vo) {
+        // UPDATE 쿼리 실행
+        mapper.replyUpdate(vo);
+        // INSERT 쿼리 실행
+        mapper.replyInsert(vo);
+    }
 
 }

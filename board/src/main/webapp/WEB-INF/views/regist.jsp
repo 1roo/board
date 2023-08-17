@@ -109,7 +109,7 @@
   });
 
   function inputHandler() {
-    const inputValue = titleInput.value;
+    const inputValue = $title.value;
     // HTML 태그를 제거하고 공백을 포함한 총 50자리까지만 유지
     const sanitizedValue = inputValue.replace(/<\/?[^>]+(>|$)/g, "");
     if (sanitizedValue.length >= 50) {

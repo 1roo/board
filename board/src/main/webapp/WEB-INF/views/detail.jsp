@@ -32,7 +32,6 @@
 				<div class="bno">
 					<input type="hidden" class="form-control" name="bno"
 						value="${article.bno}" readonly>
-					<input type="hidden"
 				</div>
 				<div class="input-line writer-input">
 					<label>작성자</label> <input class="form-control" name="writer"
@@ -55,7 +54,7 @@
 					<button type="button" class="btn list-btn btn-outline-primary"
 						onclick="location.href='${pageContext.request.contextPath}/'">목록</button>
 						<button type="button" class="btn replyBtn btn-outline-primary"
-						onclick="location.href='${pageContext.request.contextPath}/reply?no=${article.bno}'">답글달기</button>
+						onclick="location.href='${pageContext.request.contextPath}/replyRegist'">답글달기</button>
 				</div>
 				<p style="display: none" id="realPw">${fn:escapeXml(article.password)}</p>
 			</form>

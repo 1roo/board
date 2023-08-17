@@ -25,10 +25,31 @@
 	 	</if>
 	 </sql>
 	 
+	 <!-- 새글 추가 -->
 	<insert id="regist">
+		<selectKey resultType="int" keyProperty="group_no" order="BEFORE">
+			SELECT IFNULL(MAX(group_no),0)+1 FROM board
+		</selectKey>
 		INSERT INTO board
 		(title, writer, content, password, group_no)
-		VALUES(#{title}, #{writer}, #{content}, #{password}, 0)
+		VALUES(#{title}, #{writer}, #{content}, #{password}, #{group_no})
+	</insert>
+	
+	<!-- 답글 추가 -->
+	<update id="replyUpdate">
+		<![CDATA[
+	    UPDATE board
+	    SET step = step + 1
+	    WHERE group_no = (SELECT group_no FROM board WHERE bno = #{bno})
+	    AND step > (SELECT step FROM board WHERE bno = #{bno})
+	    ]]>
+	</update>
+	
+	<insert id="replyInsert" parameterType="board">
+	    INSERT INTO board
+	    (title, writer, content, password, group_no, step, depth)
+	    VALUES
+	    (#{title}, #{writer}, #{content}, #{password}, #{groupNo}, #{step}, #{depth})
 	</insert>
 	
 	<select id="getList" resultType="board">
@@ -36,7 +57,7 @@
 		(SELECT COUNT(*) FROM comment WHERE bno = b.bno) AS commentCnt
 		FROM board b
 		<include refid="search" />
-		ORDER BY group_no DESC, depth, create_date DESC
+		ORDER BY group_no DESC, step, create_date DESC
 		LIMIT #{pageStart}, #{cpp}
 	</select>
 		

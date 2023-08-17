@@ -16,3 +16,7 @@
 8월 17, 2023 14:23:06.325 [12408:11956:0817/142306.323:ERROR:device_event_log_impl.cc(222)] [14:23:06.323] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
 8월 17, 2023 14:46:08.805 [12408:11956:0817/144608.805:ERROR:interface_endpoint_client.cc(702)] Message 0 rejected by interface blink.mojom.WidgetHost
 8월 17, 2023 16:28:26.697 [12408:11956:0817/162826.697:ERROR:device_event_log_impl.cc(222)] [16:28:26.697] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+
+8월 17, 2023 22:34:03.937 NEW SESSION
+8월 17, 2023 22:34:03.937 [18496:14036:0817/223403.926:ERROR:device_event_log_impl.cc(222)] [22:34:03.926] USB: usb_service_win.cc:415 Could not read device interface GUIDs: 지정된 파일을 찾을 수 없습니다. (0x2)
+8월 17, 2023 23:26:17.642 [9812:20112:0817/232617.642:ERROR:device_event_log_impl.cc(222)] [23:26:17.641] USB: usb_service_win.cc:415 Could not read device interface GUIDs: 지정된 파일을 찾을 수 없습니다. (0x2)

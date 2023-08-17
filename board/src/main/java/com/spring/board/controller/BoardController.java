@@ -49,6 +49,17 @@ public class BoardController {
 	    service.regist(vo);
 	    return "redirect:/";
 	}
+	
+	@GetMapping("/replyRegist")
+	public String replyRegist() {
+		return "/reply";
+	}
+	
+	@PostMapping("/replyRegist") 
+	public String replyRegist(BoardVO vo) {
+		service.updateAndInsert(vo);
+		return "redirect:/";
+	}
 
 
 	
