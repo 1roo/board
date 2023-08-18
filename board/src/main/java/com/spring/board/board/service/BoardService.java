@@ -57,12 +57,8 @@ public class BoardService implements IBoardService {
 	
 	//답글 달기
 	@Override
-	@Transactional
-    public void updateAndInsert(BoardVO vo) {
-        // UPDATE 쿼리 실행
-        mapper.replyUpdate(vo);
-        // INSERT 쿼리 실행
-        mapper.replyInsert(vo);
+    public void replyRegist(BoardVO vo) {
+        mapper.replyRegist(vo);
     }
 
 }

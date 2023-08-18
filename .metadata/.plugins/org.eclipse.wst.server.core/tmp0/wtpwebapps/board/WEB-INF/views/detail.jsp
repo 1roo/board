@@ -54,7 +54,7 @@
 					<button type="button" class="btn list-btn btn-outline-primary"
 						onclick="location.href='${pageContext.request.contextPath}/'">목록</button>
 						<button type="button" class="btn replyBtn btn-outline-primary"
-						onclick="location.href='${pageContext.request.contextPath}/replyRegist'">답글달기</button>
+						onclick="location.href='${pageContext.request.contextPath}/replyRegist?bno=${bno}'">답글달기</button>
 				</div>
 				<p style="display: none" id="realPw">${fn:escapeXml(article.password)}</p>
 			</form>

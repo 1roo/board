@@ -55,9 +55,9 @@ public class BoardController {
 		return "/reply";
 	}
 	
-	@PostMapping("/replyRegist") 
-	public String replyRegist(BoardVO vo) {
-		service.updateAndInsert(vo);
+	@PostMapping("/replyRegist/{bno}") 
+	public String replyRegist(@PathVariable int bno, BoardVO vo) {
+		service.replyRegist(vo);
 		return "redirect:/";
 	}
 

@@ -25,6 +25,6 @@ public interface IBoardService {
 		void delete(int bno);
 
 		//답글 등록
-		void updateAndInsert(BoardVO vo);
+		void replyRegist(BoardVO vo);
 		
 }

@@ -20,9 +20,7 @@ public interface IBoardMapper {
 	
 	void delete(int bno);
 	
-	void updateAndInsert(BoardVO vo);
-	void replyUpdate(BoardVO vo);
-	void replyInsert(BoardVO vo);
+	void replyRegist(BoardVO vo);
 
 
 }

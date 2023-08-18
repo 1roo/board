@@ -15,9 +15,9 @@ CREATE TABLE board(
    writer VARCHAR(10) NOT NULL,
    password VARCHAR(15) NOT NULL,
    content VARCHAR(500) NOT NULL,
-   group_no INT NOT NULL,
-   step INT NOT NULL,
-   depth INT NOT NULL,
+   group_no INT NOT NULL DEFAULT 0,
+   step INT NOT NULL DEFAULT 0,
+   depth INT NOT NULL DEFAULT 0,
    create_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME DEFAULT NULL,
    comment_count INT DEFAULT 0

@@ -36,16 +36,7 @@
 	</insert>
 	
 	<!-- 답글 추가 -->
-	<update id="replyUpdate">
-		<![CDATA[
-	    UPDATE board
-	    SET step = step + 1
-	    WHERE group_no = (SELECT group_no FROM board WHERE bno = #{bno})
-	    AND step > (SELECT step FROM board WHERE bno = #{bno})
-	    ]]>
-	</update>
-	
-	<insert id="replyInsert" parameterType="board">
+	<insert id="replyRegist">
 	    INSERT INTO board
 	    (title, writer, content, password, group_no, step, depth)
 	    VALUES

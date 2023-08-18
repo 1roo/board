@@ -8,8 +8,7 @@
     <p class="title">게시판 등록</p>
     <div class="form-box">
       <form action="${pageContext.request.contextPath}/replyRegist" method="post" name="replyRegistForm">
-      
-        
+
         <div class="writerPw">
           <div class="writer-box">
 	        <div class="input-line writer-input">

@@ -20,3 +20,13 @@
 8월 17, 2023 22:34:03.937 NEW SESSION
 8월 17, 2023 22:34:03.937 [18496:14036:0817/223403.926:ERROR:device_event_log_impl.cc(222)] [22:34:03.926] USB: usb_service_win.cc:415 Could not read device interface GUIDs: 지정된 파일을 찾을 수 없습니다. (0x2)
 8월 17, 2023 23:26:17.642 [9812:20112:0817/232617.642:ERROR:device_event_log_impl.cc(222)] [23:26:17.641] USB: usb_service_win.cc:415 Could not read device interface GUIDs: 지정된 파일을 찾을 수 없습니다. (0x2)
+
+8월 18, 2023 10:13:26.644 NEW SESSION
+8월 18, 2023 10:13:26.644 [6536:16368:0818/095410.837:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+8월 18, 2023 10:13:26.654 [6536:16368:0818/101326.654:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -7
+8월 18, 2023 12:09:27.330 [6536:16368:0818/120927.329:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+8월 18, 2023 12:28:29.567 [6536:16368:0818/122829.567:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -7
+8월 18, 2023 12:29:00.19 [6536:16368:0818/122900.019:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+8월 18, 2023 17:54:40.487 [9404:8056:0818/160957.934:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+8월 18, 2023 17:54:40.511 [9404:8056:0818/175440.510:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -7
+8월 18, 2023 17:54:40.512 [9404:16112:0818/175440.511:ERROR:get_updates_processor.cc(261)] PostClientToServerMessage() failed during GetUpdates with error 2
