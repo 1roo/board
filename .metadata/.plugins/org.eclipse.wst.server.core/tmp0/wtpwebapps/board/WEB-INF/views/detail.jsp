@@ -54,7 +54,7 @@
 					<button type="button" class="btn list-btn btn-outline-primary"
 						onclick="location.href='${pageContext.request.contextPath}/'">목록</button>
 						<button type="button" class="btn replyBtn btn-outline-primary"
-						onclick="location.href='${pageContext.request.contextPath}/replyRegist?bno=${bno}'">답글달기</button>
+						onclick="location.href='${pageContext.request.contextPath}/replyRegist/${bno}'">답글달기</button>
 				</div>
 				<p style="display: none" id="realPw">${fn:escapeXml(article.password)}</p>
 			</form>
@@ -142,71 +142,7 @@
 	const $commentWriter = document.getElementById('commentWriter');
 	const $commentPw = document.getElementById('commentPw');
 		
-	//작성자 검증
-	$commentWriter.addEventListener("input", function() {
-	    const inputValue = $commentWriter.value;
-	    // HTML 태그를 제거하고 공백을 포함한 총 10자리까지만 유지
-	    const sanitizedValue = inputValue.replace(/<\/?[^>]+(>|$)/g, "");
-	    if (sanitizedValue.length >= 10) {
-		    $commentWriter.value = sanitizedValue.substring(0, 10);
-		    $commentWriter.removeEventListener("input", inputHandler);
-		    alert("작성자는 최대 10자까지만 입력 가능합니다.");
-		}
-	});
-
-	function inputHandler() {
-	    const inputValue = $commentWriter.value;
-	    // HTML 태그를 제거하고 공백을 포함한 총 10자리까지만 유지
-	    const sanitizedValue = inputValue.replace(/<\/?[^>]+(>|$)/g, "");
-	    if (sanitizedValue.length >= 10) {
-		    $commentWriter.value = sanitizedValue.substring(0, 10);
-		    $commentWriter.removeEventListener("input", inputHandler);
-		    alert("작성자는 최대 10자까지만 입력 가능합니다.");
-		}
-	}
-
-	$commentWriter.addEventListener("input", inputHandler);
-		
-	//비밀번호 검증
-	let isValidPassword = true;
-	let isPasswordAlertShown = false;
-	$commentPw.addEventListener('input', function(event) {
-	    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/;
-	    isValidPassword = passwordRegex.test($commentPw.value);
-	    isPasswordAlertShown = false;
-	});
-
-	$commentPw.addEventListener('blur', function(event) {
-	    if (!isValidPassword && !isPasswordAlertShown) {
-		    alert('비밀번호는 8자 이상 15자 이하의 영문, 숫자, 특수문자를 모두 포함해야 합니다.');
-		    $commentPw.value = '';
-		    $commentPw.focus();
-		    isPasswordAlertShown = true;
-		}
-	});
-		  
-		  
-	//내용 검증  
-	$comment.addEventListener("input", function(event) {
-	    const inputValue = $comment.value;
-	    // HTML 태그를 제거하고 정제된 값의 길이를 체크
-	    const sanitizedValue = inputValue.replace(/<\/?[^>]+(>|$)/g, "");
-	    if (sanitizedValue.length >= 300) {
-	        $content.value = sanitizedValue.substring(0, 300);
-	        event.preventDefault();
-	        alert("내용은 최대 300자입니다.");
-	    }
-	});
-		 
-	$content.addEventListener('keyup', function(event) {
-	    if ($content.value.length >= 300 && !event.ctrlKey) {
-		    $content.value = $content.value.slice(0, 300);
-		    checkContentLength();
-		    alert('내용은 최대 300자입니다.');
-		} else {
-		    checkContentLength();
-		}
-	}); 
+	
 	
 	const $updateForm = document.updateForm;
 	const realPw = document.getElementById('realPw').textContent;

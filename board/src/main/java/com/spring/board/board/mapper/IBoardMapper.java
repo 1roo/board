@@ -2,6 +2,7 @@ package com.spring.board.board.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 
 import com.spring.board.command.BoardVO;
 import com.spring.board.util.PageVO;
@@ -19,8 +20,10 @@ public interface IBoardMapper {
 	void update(BoardVO vo);
 	
 	void delete(int bno);
+
+	void replyInsert(BoardVO vo);
 	
-	void replyRegist(BoardVO vo);
+	int getMaxStep(@Param("groupNo") int groupNo, @Param("depth") int depth);
 
 
 }

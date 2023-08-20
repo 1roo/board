@@ -34,13 +34,18 @@
 		(title, writer, content, password, group_no)
 		VALUES(#{title}, #{writer}, #{content}, #{password}, #{group_no})
 	</insert>
-	
+
 	<!-- 답글 추가 -->
-	<insert id="replyRegist">
-	    INSERT INTO board
+	<select id="getMaxStep" resultType="int">
+	    SELECT IFNULL(MAX(step), 0)
+	    FROM board
+	    WHERE group_no = #{groupNo} AND depth = #{depth}
+	</select>
+	
+	<insert id="replyInsert">
+		INSERT INTO board
 	    (title, writer, content, password, group_no, step, depth)
-	    VALUES
-	    (#{title}, #{writer}, #{content}, #{password}, #{groupNo}, #{step}, #{depth})
+	    VALUES (#{title}, #{writer}, #{content}, #{password}, #{groupNo}, #{step}, #{depth})
 	</insert>
 	
 	<select id="getList" resultType="board">
@@ -48,7 +53,7 @@
 		(SELECT COUNT(*) FROM comment WHERE bno = b.bno) AS commentCnt
 		FROM board b
 		<include refid="search" />
-		ORDER BY group_no DESC, step, create_date DESC
+		ORDER BY group_no DESC, depth, step
 		LIMIT #{pageStart}, #{cpp}
 	</select>
 		

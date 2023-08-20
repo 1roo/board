@@ -7,8 +7,11 @@
   <div class="container regist-container">
     <p class="title">게시판 등록</p>
     <div class="form-box">
-      <form action="${pageContext.request.contextPath}/replyRegist" method="post" name="replyRegistForm">
-
+      <form action="${pageContext.request.contextPath}/replyRegist/${bno}" method="post" name="replyRegistForm">
+	    <input type="hidden" name="groupNo" value="${parentArticle.groupNo}">
+	    <input type="hidden" name="step" value="${parentArticle.step}">
+	    <input type="hidden" name="depth" value="${parentArticle.depth}">
+	    
         <div class="writerPw">
           <div class="writer-box">
 	        <div class="input-line writer-input">

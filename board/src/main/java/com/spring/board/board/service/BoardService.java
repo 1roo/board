@@ -1,6 +1,9 @@
 package com.spring.board.board.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,10 +58,29 @@ public class BoardService implements IBoardService {
 		mapper.delete(bno);
 	}
 	
-	//답글 달기
 	@Override
-    public void replyRegist(BoardVO vo) {
-        mapper.replyRegist(vo);
-    }
+	public void replyRegist(BoardVO vo) {
+		BoardVO reply = new BoardVO();
+		reply.setTitle(vo.getTitle());
+		reply.setWriter(vo.getWriter());
+		reply.setPassword(vo.getPassword());
+		reply.setContent(vo.getContent());
+		reply.setGroupNo(vo.getGroupNo());
+		reply.setStep(vo.getStep());
+		reply.setDepth(vo.getDepth());
+		
+		mapper.replyInsert(reply);
+	}
+
+	@Override
+	public int getMaxStep(int groupNo, int depth) {
+		return mapper.getMaxStep(groupNo, depth);
+	}
+
+
+
+
+
+
 
 }
