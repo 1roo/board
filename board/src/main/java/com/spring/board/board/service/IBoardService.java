@@ -24,9 +24,7 @@ public interface IBoardService {
 		//글 삭제
 		void delete(int bno);
 
-		void replyRegist(BoardVO vo);
-		
-		int getMaxStep(int groupNo, int depth);
-		
+		// 답글 등록
+		void replyRegist(int bno, BoardVO vo);
 
 }

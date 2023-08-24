@@ -3,6 +3,7 @@ package com.spring.board.command;
 import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -50,6 +51,7 @@ DELIMITER ;*/
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class BoardVO {
 	private int bno;
 	private String title;
@@ -63,16 +65,6 @@ public class BoardVO {
 	private int step;
 	private int depth;
 	
-	private int commentCnt;
-	
-	 private int group_no;  // 이름 변경
-
-    public int getGroup_no() {  // 이름 변경
-        return group_no;
-    }
-
-    public void setGroup_no(int group_no) {  // 이름 변경
-        this.group_no = group_no;
-    }
-
+	@Builder.Default
+	private int commentCnt = 0;
 }

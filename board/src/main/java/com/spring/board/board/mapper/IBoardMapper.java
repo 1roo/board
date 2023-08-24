@@ -23,8 +23,11 @@ public interface IBoardMapper {
 
 	void replyInsert(BoardVO vo);
 	
-	int getMaxStep(@Param("groupNo") int groupNo, @Param("depth") int depth);
-
+	Integer countByGroupNoAndDepth(@Param("groupNo") int groupNo, @Param("depth") int depth);
+	
+	Integer getMaxStep();
+	
+	void updateReplyGroupStep(@Param("step")int step);
 
 }
 

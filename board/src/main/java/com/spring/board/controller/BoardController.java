@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -58,25 +59,9 @@ public class BoardController {
 		return "/reply";
 	}
 	
-	@PostMapping("/replyRegist/{bno}")
+	@PostMapping("/replyRegist/{bno}") @Transactional
 	public String replyRegist(@PathVariable int bno, BoardVO vo) {
-	    BoardVO parentArticle = service.getContent(bno);
-	    
-	    vo.setGroupNo(parentArticle.getGroupNo()); // 부모 글의 groupNo를 새 답글에 설정
-	    
-	    // 부모 글의 depth를 기반으로 답글의 depth 설정
-	    vo.setDepth(parentArticle.getDepth() + 1);
-	    
-	    // step을 설정하기 위해 같은 group의 같은 depth의 step값 계산
-	    int maxStep = service.getMaxStep(parentArticle.getGroupNo(), vo.getDepth());
-	    vo.setStep(maxStep + 1);
-	    
-	    log.info("parentArticle의 groupNo: " + vo.getGroupNo());
-	    log.info("새 답글의 step: " + vo.getStep());
-	    log.info("새 답글의 depth: " + vo.getDepth());
-	    
-	    service.replyRegist(vo);
-	    
+	    service.replyRegist(bno, vo);
 	    return "redirect:/";
 	}
 

@@ -32,6 +32,12 @@
 				<div class="bno">
 					<input type="hidden" class="form-control" name="bno"
 						value="${article.bno}" readonly>
+					<input type="hidden" class="form-control" name="groupNo"
+						value="${article.groupNo}" readonly>
+					<input type="hidden" class="form-control" name="step"
+						value="${article.step}" readonly>
+					<input type="hidden" class="form-control" name="depth"
+						value="${article.depth}" readonly>
 				</div>
 				<div class="input-line writer-input">
 					<label>작성자</label> <input class="form-control" name="writer"
