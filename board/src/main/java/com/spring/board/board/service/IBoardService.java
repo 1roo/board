@@ -24,7 +24,7 @@ public interface IBoardService {
 		//글 삭제
 		void delete(int bno);
 
-		// 답글 등록
-		void replyRegist(int bno, BoardVO vo);
+		void replyRegist(BoardVO vo);
+		
 
 }

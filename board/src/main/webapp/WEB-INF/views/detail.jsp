@@ -63,6 +63,12 @@
 						onclick="location.href='${pageContext.request.contextPath}/replyRegist/${bno}'">답글달기</button>
 				</div>
 				<p style="display: none" id="realPw">${fn:escapeXml(article.password)}</p>
+			
+				<input type="hidden" name="bno" value="${article.bno}">
+				<input type="hidden" name="groupNo" value="${article.groupNo}">
+				<input type="hidden" name="step" value="${article.step}">
+				<input type="hidden" name="depth" value="${article.depth}">
+				<input type="hidden" name="commentCount" value="${article.commentCount}">
 			</form>
 		</div>
 	</div>
