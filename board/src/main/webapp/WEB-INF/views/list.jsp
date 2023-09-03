@@ -17,7 +17,7 @@
 	<div class="container list-container">
 		<a href="${pageContext.request.contextPath}"><p class="title">게시판 목록</p></a>
 		<div class="top-container">
-	        <form class="search-form" action="<c:url value='/list' />">
+	        <form class="search-form" action="<c:url value='/' />">
 	            <div class="search-wrap">
 	                <select name="condition" class="search-select form-select">
 	                    <option value="title" ${pc.pageVO.condition == 'title' ? 'selected' : ''}>
@@ -55,27 +55,49 @@
 			
 				<c:forEach var="vo" items="${list}"  varStatus="loop">
 					<tr>
-						<td id=listBoardNo>
-							${totalBoardCount - (pc.pageVO.getPageStart() + loop.index)}
-						</td>
-						<td id="title" class="titles">
-                            <a href="${pageContext.request.contextPath}/content/${vo.bno}?pageNum=${fn:escapeXml(pc.pageVO.pageNum)}&cpp=${fn:escapeXml(pc.pageVO.cpp)}&searchWord=${fn:escapeXml(pc.pageVO.searchWord)}&condition=${fn:escapeXml(pc.pageVO.condition)}" class="preserve-whitespace">
-                            <c:if test="${vo.step > 0}">
-								<c:forEach begin="1" end="${vo.depth}" step="1">&nbsp;&nbsp;&nbsp;</c:forEach>
-								ㄴ
-							</c:if>
-                            ${fn:escapeXml(vo.title)}
-                            <b>[${vo.commentCount}]</b></a>
-                        </td>
-                        <td id="writer">
-                            ${fn:escapeXml(vo.writer)}
-                        </td>                        
-						<td>
-                            <fmt:parseDate
-								value="${vo.updateDate == null ? vo.createDate : vo.updateDate}"
-								pattern="yyyy-MM-dd" var="parsedDateTime" type="both" />
-                            <fmt:formatDate value="${parsedDateTime}" pattern="yyyy-MM-dd" />
-                        </td>
+						<c:if test="${vo.del == 0}">
+							<td id=listBoardNo>
+								${totalBoardCount - (pc.pageVO.getPageStart() + loop.index)}
+							</td>
+							<td id="title" class="titles text-truncate">
+	                            <a href="${pageContext.request.contextPath}/content/${vo.bno}?pageNum=${fn:escapeXml(pc.pageVO.pageNum)}&cpp=${fn:escapeXml(pc.pageVO.cpp)}&searchWord=${fn:escapeXml(pc.pageVO.searchWord)}&condition=${fn:escapeXml(pc.pageVO.condition)}" class="preserve-whitespace">
+	                            <c:if test="${vo.step > 0}">
+									<c:forEach begin="1" end="${vo.depth}" step="1">&nbsp;&nbsp;&nbsp;</c:forEach>
+									ㄴ
+								</c:if>
+	                            ${fn:escapeXml(vo.title)}
+	                            <b>[${vo.commentCount}]</b></a>
+	                        </td>
+	                        <td id="writer">
+	                            ${fn:escapeXml(vo.writer)}
+	                        </td>                        
+							<td>
+	                            <fmt:parseDate
+									value="${vo.updateDate == null ? vo.createDate : vo.updateDate}"
+									pattern="yyyy-MM-dd" var="parsedDateTime" type="both" />
+	                            <fmt:formatDate value="${parsedDateTime}" pattern="yyyy-MM-dd" />
+	                        </td>
+                        </c:if>
+                        <c:if test="${vo.del == 1}">
+							<td id=listBoardNo>
+								${totalBoardCount - (pc.pageVO.getPageStart() + loop.index)}
+							</td>
+							<td id="title" class="titles text-truncate">
+	                            
+	                            <c:if test="${vo.step > 0}">
+									<c:forEach begin="1" end="${vo.depth}" step="1">&nbsp;&nbsp;&nbsp;</c:forEach>
+									ㄴ
+								</c:if>
+	                            삭제된 게시글 입니다.
+	                            
+	                        </td>
+	                        <td id="writer">
+	                            ${fn:escapeXml(vo.writer)}
+	                        </td>                        
+							<td>
+	                           
+	                        </td>
+                        </c:if>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -88,11 +110,13 @@
                 <ul class="pagination">
                     <div class="flex-paging">
 						<!-- 제일 처음 버튼 -->
+						<c:if test="${pc.firstPage}">
 					    <li class="page-item">
-					        <a href="#" class="page-link first" data-pagenum="${pc.firstPage}">
-					            <i class="fas fa-angle-double-left" data-pagenum="${pc.firstPage}"></i>
+					        <a href="#" class="page-link first" data-pagenum="1">
+					            <i class="fas fa-angle-double-left" data-pagenum="1"></i>
 					        </a>
 					    </li>
+					    </c:if>
                         <!-- 이전 버튼 -->
                         <c:if test="${pc.prev}">
                             <li class="page-item">
@@ -119,11 +143,13 @@
                         </c:if>
                 
                         <!-- 제일 끝 버튼 -->
-                        <li class="page-item">
-					        <a href="#" class="page-link last" data-pagenum="${pc.lastPage}">
-					           <i class="fas fa-angle-double-right" data-pagenum="${pc.lastPage}"></i>
-					        </a>
-					    </li>
+                        <c:if test="${pc.lastPage}">
+	                        <li class="page-item">
+						        <a href="#" class="page-link last" data-pagenum="${pc.totalPage}">
+						           <i class="fas fa-angle-double-right" data-pagenum="${pc.totalPage}"></i>
+						        </a>
+						    </li>
+					    </c:if>
                     </div>
                 </ul>                
             </nav>

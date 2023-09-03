@@ -13,6 +13,7 @@
 	    <input type="hidden" name="depth" value="${parentArticle.depth}">
 	    <input type="hidden" name="commentCount" value="${parentArticle.commentCount}">
 	    <input type="hidden" name="bno" value="${parentArticle.bno}">
+	    <input type="hidden" name="babyCount" value="${parentArticle.babyCount}">
 	    
         <div class="writerPw">
           <div class="writer-box">
@@ -55,14 +56,14 @@ const $title = document.getElementById('title');
 const $content = document.getElementById('content');
 
 //작성자 검증
-$writer.addEventListener("input", function() {
+$writer.addEventListener("keyup", function() {
 const inputValue = $writer.value;
 // HTML 태그를 제거하고 공백을 포함한 총 10자리까지만 유지
 const sanitizedValue = inputValue.replace(/<\/?[^>]+(>|$)/g, "");
 if (sanitizedValue.length >= 10) {
+  alert("작성자는 최대 10자까지만 입력 가능합니다.");
   $writer.value = sanitizedValue.substring(0, 10);
   $writer.removeEventListener("input", inputHandler);
-  alert("작성자는 최대 10자까지만 입력 가능합니다.");
 }
 });
 
@@ -73,7 +74,6 @@ const sanitizedValue = inputValue.replace(/<\/?[^>]+(>|$)/g, "");
 if (sanitizedValue.length >= 10) {
   $writer.value = sanitizedValue.substring(0, 10);
   $writer.removeEventListener("input", inputHandler);
-  alert("작성자는 최대 10자까지만 입력 가능합니다.");
 }
 }
 
@@ -101,14 +101,14 @@ if (!isValidPassword && !isPasswordAlertShown) {
 
 
 //제목 검증
-$title.addEventListener("input", function() {
+$title.addEventListener("keyup", function() {
 const inputValue = $title.value;
 // HTML 태그를 제거하고 공백을 포함한 총 10자리까지만 유지
 const sanitizedValue = inputValue.replace(/<\/?[^>]+(>|$)/g, "");
 if (sanitizedValue.length >= 50) {
+  alert("작성자는 50자까지만 입력 가능합니다.");
   $title.value = sanitizedValue.substring(0, 50);
   $title.removeEventListener("input", inputHandler);
-    alert("작성자는 50자까지만 입력 가능합니다.");
 }
 });
 
@@ -117,9 +117,9 @@ const inputValue = $title.value;
 // HTML 태그를 제거하고 공백을 포함한 총 50자리까지만 유지
 const sanitizedValue = inputValue.replace(/<\/?[^>]+(>|$)/g, "");
 if (sanitizedValue.length >= 50) {
+  alert("제목은 50자까지만 입력 가능합니다.");
   $title.value = sanitizedValue.substring(0, 50);
   $title.removeEventListener("input", inputHandler);
-    alert("제목은 50자까지만 입력 가능합니다.");
 }
 }
 
@@ -132,17 +132,17 @@ const inputValue = $content.value;
 // HTML 태그를 제거하고 정제된 값의 길이를 체크
 const sanitizedValue = inputValue.replace(/<\/?[^>]+(>|$)/g, "");
 if (sanitizedValue.length >= 500) {
+  alert("내용은 최대 500자입니다.");
   $content.value = sanitizedValue.substring(0, 500);
   event.preventDefault();
-  alert("내용은 최대 500자입니다.");
 }
 });
 
 $content.addEventListener('keyup', function(event) {
 if ($content.value.length >= 500 && !event.ctrlKey) {
+  alert('내용은 최대 500자입니다.');
   $content.value = $content.value.slice(0, 500);
   checkContentLength();
-  alert('내용은 최대 500자입니다.');
 } else {
   checkContentLength();
 }

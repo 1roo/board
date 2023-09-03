@@ -21,7 +21,6 @@ INDEX VERSION 1.131+C:\Users\hanarae\Desktop\board\.metadata\.plugins\org.eclips
 1425716597.index
 3529563659.index
 2493167708.index
-4114157239.index
 1357901832.index
 2263245040.index
 176720950.index

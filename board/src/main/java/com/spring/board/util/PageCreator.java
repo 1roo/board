@@ -11,9 +11,9 @@ public class PageCreator {
 
     private PageVO pageVO;
     private int totalBoardCount, endPage, beginPage;
-    private int firstPage, lastPage;
+    private boolean firstPage, lastPage;
     private boolean prev, next;
-
+    private int totalPage;
     private final int buttonNum = 10;
 
     public PageCreator(PageVO pageVO, int totalBoardCount) {
@@ -28,6 +28,10 @@ public class PageCreator {
 
         // 시작 페이지 계산
         beginPage = endPage - buttonNum + 1;
+        
+        firstPage = (beginPage == 1) ? false : true;
+        lastPage = (endPage * pageVO.getCpp() >= totalBoardCount ? false : true);
+        totalPage = (int) Math.ceil(totalBoardCount / (double) pageVO.getCpp());
 
         // 이전 버튼 표시 여부
         prev = (beginPage == 1) ? false : true;
@@ -37,13 +41,8 @@ public class PageCreator {
 
         // 다음 버튼이 표시되지 않는 경우 끝 페이지 재조정
         if (!next) {
-            endPage = lastPage;
+            endPage = (int) (Math.ceil(totalBoardCount / (double) pageVO.getCpp()));
         }
-        
-        // 맨 처음 페이지 계산
-        firstPage = 1;
 
-        // 맨 끝 페이지 계산
-        lastPage = (int) (Math.ceil(totalBoardCount / (double) pageVO.getCpp()));
     }
 }

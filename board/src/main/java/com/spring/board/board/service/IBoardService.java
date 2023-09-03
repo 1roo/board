@@ -22,7 +22,7 @@ public interface IBoardService {
 		void update(BoardVO vo);
 		
 		//글 삭제
-		void delete(int bno);
+		void delete(BoardVO vo);
 
 		void replyRegist(BoardVO vo);
 		

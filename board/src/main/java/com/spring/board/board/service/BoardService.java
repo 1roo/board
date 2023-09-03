@@ -51,19 +51,23 @@ public class BoardService implements IBoardService {
 	}
 
 	@Override
-	public void delete(int bno) {
-		mapper.delete(bno);
+	public void delete(BoardVO vo) {
+		if(vo.getBabyCount() == 0) {
+			mapper.delete(vo.getBno());			
+		} else {
+			mapper.notice(vo);
+		}
 	}
 	
 	@Override
 	public void replyRegist(BoardVO vo) {
 		
-		int maxStep = mapper.findStep(vo);
+		int getStep = mapper.findStep(vo);
 		
-		if(maxStep != 0) {
-			mapper.updateReply(vo.getGroupNo(), maxStep);
+		if(getStep != 0) {
+			mapper.updateReply(vo.getGroupNo(), getStep);
 		} else {
-			maxStep = mapper.getMaxStep(vo.getGroupNo());
+			getStep = mapper.getMaxStep(vo.getGroupNo());
 		}
 		
 		BoardVO reply = new BoardVO();
@@ -73,10 +77,11 @@ public class BoardService implements IBoardService {
 		reply.setContent(vo.getContent());
 		reply.setGroupNo(vo.getGroupNo());
 		reply.setDepth(vo.getDepth()+1);
-		reply.setStep(maxStep);
+		reply.setStep(getStep);
 		reply.setCommentCount(vo.getCommentCount());
 		
 		mapper.replyInsert(reply);
+		mapper.countBabies(vo.getBno());
 	}
 
 

@@ -51,25 +51,25 @@
 	const $content = document.getElementById('content');
 
 	//작성자 검증
-  $writer.addEventListener("input", function() {
-    const inputValue = $writer.value;
-    // HTML 태그를 제거하고 공백을 포함한 총 10자리까지만 유지
-    const sanitizedValue = inputValue.replace(/<\/?[^>]+(>|$)/g, "");
-    if (sanitizedValue.length >= 10) {
-      $writer.value = sanitizedValue.substring(0, 10);
-      $writer.removeEventListener("input", inputHandler);
-      alert("작성자는 최대 10자까지만 입력 가능합니다.");
-    }
-  });
+  $writer.addEventListener("keyup", function() {
+	    const inputValue = $writer.value;
+	    // HTML 태그를 제거하고 공백을 포함한 총 10자리까지만 유지
+	    const sanitizedValue = inputValue.replace(/<\/?[^>]+(>|$)/g, "");
+	    if (sanitizedValue.length >= 10) {
+	      alert("작성자는 최대 10자까지만 입력 가능합니다.");
+	      $writer.value = sanitizedValue.substring(0, 10);
+	      $writer.removeEventListener("input", inputHandler);
+	    }
+	  });
+
 
   function inputHandler() {
     const inputValue = $writer.value;
     // HTML 태그를 제거하고 공백을 포함한 총 10자리까지만 유지
     const sanitizedValue = inputValue.replace(/<\/?[^>]+(>|$)/g, "");
-    if (sanitizedValue.length >= 10) {
+    if (sanitizedValue.length > 10) {
       $writer.value = sanitizedValue.substring(0, 10);
       $writer.removeEventListener("input", inputHandler);
-      alert("작성자는 최대 10자까지만 입력 가능합니다.");
     }
   }
 
@@ -104,7 +104,17 @@
     if (sanitizedValue.length >= 50) {
       $title.value = sanitizedValue.substring(0, 50);
       $title.removeEventListener("input", inputHandler);
-        alert("작성자는 50자까지만 입력 가능합니다.");
+    }
+  });
+//제목 검증
+  $title.addEventListener("keyup", function() {
+    const inputValue = $title.value;
+    // HTML 태그를 제거하고 공백을 포함한 총 10자리까지만 유지
+    const sanitizedValue = inputValue.replace(/<\/?[^>]+(>|$)/g, "");
+    if (sanitizedValue.length >= 50) {
+      alert("작성자는 50자까지만 입력 가능합니다.");
+      $title.value = sanitizedValue.substring(0, 50);
+      $title.removeEventListener("input", inputHandler);
     }
   });
 
@@ -115,7 +125,6 @@
     if (sanitizedValue.length >= 50) {
       $title.value = sanitizedValue.substring(0, 50);
       $title.removeEventListener("input", inputHandler);
-        alert("제목은 50자까지만 입력 가능합니다.");
     }
   }
 
@@ -130,7 +139,6 @@
     if (sanitizedValue.length >= 500) {
       $content.value = sanitizedValue.substring(0, 500);
       event.preventDefault();
-      alert("내용은 최대 500자입니다.");
     }
   });
  

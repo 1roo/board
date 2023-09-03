@@ -34,6 +34,17 @@
 		(title, writer, content, password, group_no)
 		VALUES(#{title}, #{writer}, #{content}, #{password}, #{group_no})
 	</insert>
+	
+	<update id="countBabies">
+		UPDATE board
+		SET baby_count = baby_count + 1
+		WHERE bno = #{bno}
+	</update>
+	<update id="notice">
+		UPDATE board
+		SET writer = "", title = "", password = "", content = "", del = 1
+		WHERE bno = #{bno}
+	</update>
 
 	<!-- 답글 추가 -->
 	<select id="getMaxStep" resultType="int">
@@ -53,7 +64,7 @@
 	<update id="updateReply">
 		UPDATE board
 		SET step = step +1
-		WHERE group_no = #{groupNo} AND step >= #{maxStep}
+		WHERE group_no = #{groupNo} AND step >= #{getStep}
 	</update>
 	
 	<insert id="replyInsert">
@@ -64,7 +75,7 @@
 	
 	<select id="getList" resultType="board">
 		SELECT b.*,
-		(SELECT COUNT(*) FROM comment WHERE bno = b.bno) AS commentCnt
+		(SELECT COUNT(*) FROM comment WHERE bno = b.bno) AS commentCount
 		FROM board b
 		<include refid="search" />
 		ORDER BY group_no DESC, step

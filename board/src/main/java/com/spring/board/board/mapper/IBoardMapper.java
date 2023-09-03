@@ -27,7 +27,11 @@ public interface IBoardMapper {
 	
 	int findStep(BoardVO vo);
 	
-	void updateReply(@Param("groupNo") int groupNo, @Param("maxStep") int maxStep);
+	void updateReply(@Param("groupNo") int groupNo, @Param("maxStep") int getStep);
+	
+	int countBabies(int bno);
+	
+	void notice(BoardVO vo);
 
 
 }

@@ -84,8 +84,8 @@ public class BoardController {
 	}
 	
 	@PostMapping("/delete")
-	public String delete(int bno) {
-		service.delete(bno);
+	public String delete(BoardVO vo) {
+		service.delete(vo);
 		return "redirect:/";
 	}
 

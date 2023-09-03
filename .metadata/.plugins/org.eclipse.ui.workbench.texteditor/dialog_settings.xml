@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="nbsp"/>
+		<item key="selection" value="/list"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="nbsp"/>
-			<item value="cnt"/>
-			<item value="form.w"/>
+			<item value="/list"/>
 			<item value="form"/>
+			<item value="count"/>
+			<item value="cnt"/>
+			<item value="nbsp"/>
+			<item value="form.w"/>
 			<item value="replyRegistForm"/>
 			<item value="form.wri"/>
 			<item value="titleInput"/>
@@ -21,8 +23,6 @@
 			<item value="commentModify"/>
 			<item value="수정"/>
 			<item value="ModBtn"/>
-			<item value="closeMo"/>
-			<item value="modalCno"/>
 		</list>
 		<list key="replacehistory">
 		</list>

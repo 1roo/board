@@ -69,6 +69,7 @@
 				<input type="hidden" name="step" value="${article.step}">
 				<input type="hidden" name="depth" value="${article.depth}">
 				<input type="hidden" name="commentCount" value="${article.commentCount}">
+				<input type="hidden" name="babyCount" value="${article.babyCount}">
 			</form>
 		</div>
 	</div>

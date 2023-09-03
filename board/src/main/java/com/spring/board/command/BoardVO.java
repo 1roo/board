@@ -21,7 +21,9 @@ CREATE TABLE board(
    depth INT NOT NULL DEFAULT 0,
    create_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME DEFAULT NULL,
-   comment_count INT DEFAULT 0
+   comment_count INT DEFAULT 0,
+   baby_count INT DEFAULT 0,
+   del INT DEFAULT 0
 );
 */
 
@@ -46,5 +48,7 @@ public class BoardVO {
 	
 	private int group_no; 
 	
-	private int commentCount = 0;
+	private int commentCount;
+	private int babyCount;
+	private int del;
 }
